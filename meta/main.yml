@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author: "Miguel Caballer"
+  description: Ansible role to install ganglia in a set of nodes
+  license: MIT
+  min_ansible_version: 1.4
+  version: 0.2
+  categories:
+    - clustering
+  dependencies: []
