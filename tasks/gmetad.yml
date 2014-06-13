@@ -24,16 +24,6 @@
       - restart gmond
       - restart ganglia-monitor
 
-- command: sed -i 's/@mod_path@/\/usr\/lib64\/ganglia\//g' /etc/ganglia/gmond.conf
-  when: redhat_os 
-  notify:
-      - restart gmond
-
-- command: sed -i 's/@mod_path@/\/usr\/lib\/ganglia\//g' /etc/ganglia/gmond.conf
-  when: debian_os
-  notify:
-      - restart ganglia-monitor
-     
 - name: start gmond
   action: service name=gmond state=running
   when: redhat_os
@@ -47,13 +37,3 @@
 - name: start gmetad
   action: service name=gmetad state=running
   when: redhat_os
-
-
-  
-  
-
-
-
-
-
-

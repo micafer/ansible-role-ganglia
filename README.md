@@ -1,4 +1,4 @@
-Ganglia ansible-playbooks
+Ganglia ansible role
 =========================
 
 Installs and configure Ganglia monitoring system in a cluster of nodes.
