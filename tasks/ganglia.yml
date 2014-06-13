@@ -1,0 +1,27 @@
+# RedHat related OSs
+- name: create epel.repo
+  action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
+  when: redhat_os
+
+- name: Yum install ganglia-gmond
+  action: yum pkg=ganglia-gmond state=installed
+  when: redhat_os
+
+# Debian related OSs
+- name: Apt install ganglia-monitor
+  action: apt pkg=ganglia-monitor state=installed
+  when: debian_os
+
+- name: configure gmond
+  action: template src=gmond.conf dest=/etc/ganglia/gmond.conf owner=root group=root
+  notify:
+      - restart gmond
+      - restart ganglia-monitor
+
+- name: start gmond
+  action: service name=gmond state=running
+  when: redhat_os
+
+
+  
+
