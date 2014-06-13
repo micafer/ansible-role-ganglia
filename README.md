@@ -6,12 +6,19 @@ How to use it:
 
 In the "Monitored nodes"
 ```yml
+  vars_files: 
+    - [ "utils/vars/{{ ansible_distribution }}.yml", "utils/vars/os_defaults.yml" ]
+
  roles: 
-    - { role: 'ganglia', ganglia_gmetad: 'master', ganglia_type_of_node: 'slave'}
+    - { role: 'ganglia',  ganglia_gmetad: 'master' }
 ```
 
 In the "Ganglia meta Daemon node"
 ```yml
-- include: ganglia/tasks/ganglia.yml is_client=no ganglia_gmetad=<MASTER_NODE_NAME_OR_IP>
+  vars_files: 
+    - [ "utils/vars/{{ ansible_distribution }}.yml", "utils/vars/os_defaults.yml" ]
+
+ roles: 
+    - { role: 'ganglia', ganglia_gmetad: 'master', ganglia_type_of_node: 'master'}
 ```
 
