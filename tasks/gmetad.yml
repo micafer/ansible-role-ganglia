@@ -37,3 +37,7 @@
 - name: start gmetad
   action: service name=gmetad state=running
   when: "ansible_os_family == 'RedHat'"
+
+- name: Open port 8651 - tcp in the firewall
+  command: iptables -I INPUT -p tcp --dport 8651:8651 -j ACCEPT
+  ignore_errors: yes
