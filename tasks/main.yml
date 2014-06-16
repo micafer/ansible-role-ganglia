@@ -1,7 +1,4 @@
-- include_vars: "{{ item }}"
-  with_first_found:
-   - "{{ ansible_distribution }}.yml"
-   - "os_defaults.yml"
+- include_vars: "{{ ansible_os_family }}.yml"
 
 - include: ganglia.yml is_client=yes ganglia_gmetad={{ ganglia_gmetad }}
   when: "ganglia_type_of_node == 'slave'"

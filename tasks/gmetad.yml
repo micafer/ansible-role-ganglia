@@ -1,14 +1,14 @@
 # RedHat related OSs
 - name: create epel.repo
   action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"
 
 - name: Yum install $item
   action: yum pkg=$item state=installed
   with_items:
     - ganglia-gmond
     - ganglia-gmetad
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"
 
 # Debian related OSs
 - name: Apt install $item
@@ -16,7 +16,7 @@
   with_items:
     - ganglia-monitor
     - gmetad
-  when: debian_os
+  when: "ansible_os_family == 'Debian'"
 
 - name: configure ganglia-monitor
   action: template src=gmond.conf dest=/etc/ganglia/gmond.conf owner=root group=root
@@ -26,7 +26,7 @@
 
 - name: start gmond
   action: service name=gmond state=running
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"
   
 - name: configure gmetad
   action: template src=gmetad.conf dest=/etc/ganglia/gmetad.conf owner=root group=root
@@ -36,4 +36,4 @@
   
 - name: start gmetad
   action: service name=gmetad state=running
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"

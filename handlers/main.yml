@@ -1,15 +1,15 @@
 - name: restart gmetad
   action: service name=gmetad state=restarted
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"
 
 - name: restart gmond
   action: service name=gmond state=restarted
-  when: redhat_os
+  when: "ansible_os_family == 'RedHat'"
   
 - name: restart ganglia-monitor
   action: service name=ganglia-monitor state=restarted pattern=/usr/sbin/gmond
-  when: debian_os
+  when: "ansible_os_family == 'Debian'"
   
 - name: restart gmetad-dev
   action: service name=gmetad state=restarted pattern=/usr/sbin/gmetad
-  when: debian_os
+  when: "ansible_os_family == 'Debian'"
