@@ -18,10 +18,14 @@
       - restart gmond
       - restart ganglia-monitor
 
-- name: restart gmond
+- name: start gmond
+  action: service name=gmond state=running
+  when: "ansible_os_family == 'RedHat'"
+
+- name: initially restart gmond
   action: service name=gmond state=restarted
   when: "ansible_os_family == 'RedHat'"
 
-- name: restart ganglia-monitor
+- name: itially restart ganglia-monitor
   action: service name=ganglia-monitor state=restarted pattern=/usr/sbin/gmond
   when: "ansible_os_family == 'Debian'"
