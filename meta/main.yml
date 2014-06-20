@@ -7,4 +7,20 @@ galaxy_info:
   version: 0.2
   categories:
     - clustering
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 5
+  - name: Ubuntu
+    versions:
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
+  - name: Debian
+    versions:
+    - squeeze
+    - wheezy
   dependencies: []
