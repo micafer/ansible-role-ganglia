@@ -7,12 +7,12 @@ How to use it:
 In the "Monitored nodes"
 ```yml
  roles: 
-    - { role: 'ganglia',  ganglia_gmetad: 'master' }
+    - { role: 'ganglia',  ganglia_gmetad: 'MASTER_NODE_NAME_OR_IPr' }
 ```
 
 In the "Ganglia meta Daemon node"
 ```yml
  roles: 
-    - { role: 'ganglia', ganglia_gmetad: 'master', ganglia_type_of_node: 'master'}
+    - { role: 'ganglia', ganglia_gmetad: 'MASTER_NODE_NAME_OR_IP', ganglia_type_of_node: 'master'}
 ```
 
