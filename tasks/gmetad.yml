@@ -3,16 +3,16 @@
   action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
   when: "ansible_os_family == 'RedHat'"
 
-- name: Yum install $item
-  action: yum pkg=$item state=installed
+- name: Yum install {{item}}
+  action: yum pkg={{item}} state=installed
   with_items:
     - ganglia-gmond
     - ganglia-gmetad
   when: "ansible_os_family == 'RedHat'"
 
 # Debian related OSs
-- name: Apt install $item
-  action: apt pkg=$item state=installed
+- name: Apt install {{item}}
+  action: apt pkg={{item}} state=installed
   with_items:
     - ganglia-monitor
     - gmetad
