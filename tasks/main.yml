@@ -1,9 +1,9 @@
 - include_vars: "{{ ansible_os_family }}.yml"
 
-- include: ganglia.yml is_client=yes ganglia_gmetad={{ ganglia_gmetad }}
+- include: ganglia.yml is_client=yes ganglia_gmetad="{{ ganglia_gmetad }}"
   when: "ganglia_type_of_node == 'slave'"
 
-- include: gmetad.yml is_client=no ganglia_gmetad={{ ganglia_gmetad }}
+- include: gmetad.yml is_client=no ganglia_gmetad="{{ ganglia_gmetad }}"
   when: "ganglia_type_of_node == 'master'"
 
 - name: Open port 8649 - {{item}} in the firewall
