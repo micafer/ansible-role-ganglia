@@ -1,9 +1,5 @@
 - include_vars: "{{ ansible_os_family }}.yml"
 
-- name: cleaning task for yum
-  command: yum clean all
-  when: "ansible_os_family == 'RedHat'"
-  
 - name: check file epel.repo
   stat: path=/etc/yum.repos.d/epel.repo
   register: epel_repo
