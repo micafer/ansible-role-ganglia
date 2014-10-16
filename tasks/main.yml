@@ -1,5 +1,9 @@
 - include_vars: "{{ ansible_os_family }}.yml"
 
+- name: cleaning task for yum
+  command: yum clean all
+  when: "ansible_os_family == 'RedHat'"
+
 - include: ganglia.yml is_client=yes ganglia_gmetad="{{ ganglia_gmetad }}"
   when: "ganglia_type_of_node == 'slave'"
 
