@@ -1,7 +1,11 @@
 # RedHat related OSs
+- name: check file epel.repo
+  stat: path=/etc/yum.repos.d/epel.repo
+  register: epel_repo
+
 - name: create epel.repo
   action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
-  when: "ansible_os_family == 'RedHat'"
+  when: "ansible_os_family == 'RedHat'" and epel_repo.stat.exists
 
 - name: Yum install {{item}}
   action: yum pkg={{item}} state=installed
