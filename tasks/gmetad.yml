@@ -5,7 +5,7 @@
 
 - name: create epel.repo
   action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
-  when: "ansible_os_family == 'RedHat'" and not epel_repo.stat.exists
+  when: "ansible_os_family == 'RedHat'" and epel_repo.stat.exists == false
 
 - name: Yum install {{item}}
   action: yum pkg={{item}} state=installed
