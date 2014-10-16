@@ -7,6 +7,7 @@
 - name: check file epel.repo
   stat: path=/etc/yum.repos.d/epel.repo
   register: epel_repo
+  when: "ansible_os_family == 'RedHat'"
 
 - name: create epel.repo
   action: template src=epel.repo dest=/etc/yum.repos.d/epel.repo 
