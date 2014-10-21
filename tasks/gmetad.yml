@@ -37,3 +37,11 @@
 - name: Open port 8651 - tcp in the firewall
   command: iptables -I INPUT -p tcp --dport 8651:8651 -j ACCEPT
   ignore_errors: yes
+  
+- name: Open port 8649 - tcp in the firewall
+  command: iptables -I INPUT -p tcp --dport 8649:8649 -j ACCEPT
+  ignore_errors: yes
+
+- name: Open port 8649 - udp in the firewall
+  command: iptables -I INPUT -p udp --dport 8649:8649 -j ACCEPT
+  ignore_errors: yes
