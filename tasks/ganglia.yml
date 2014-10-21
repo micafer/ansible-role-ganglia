@@ -18,9 +18,6 @@
   action: service name=gmond state=running
   when: "ansible_os_family == 'RedHat'"
 
-- wait_for: host={{ ganglia_gmetad }} port=8649 timeout=240
-  ignore_errors: yes
-
 - name: initially restart gmond
   action: service name=gmond state=restarted
   when: "ansible_os_family == 'RedHat'"
