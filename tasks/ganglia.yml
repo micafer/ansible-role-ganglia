@@ -1,11 +1,11 @@
 # RedHat related OSs
 - name: Yum install ganglia-gmond
-  action: yum pkg=ganglia-gmond state=installed
+  action: yum pkg=ganglia-gmond state=present
   when: "ansible_os_family == 'RedHat'"
 
 # Debian related OSs
 - name: Apt install ganglia-monitor
-  action: apt pkg=ganglia-monitor state=installed
+  action: apt pkg=ganglia-monitor state=present
   when: "ansible_os_family == 'Debian'"
 
 - name: configure gmond
