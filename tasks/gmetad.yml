@@ -21,7 +21,7 @@
       - restart ganglia-monitor
 
 - name: start gmond
-  action: service name=gmond state=running
+  action: service name=gmond state=started
   when: "ansible_os_family == 'RedHat'"
   
 - name: configure gmetad
@@ -31,7 +31,7 @@
       - restart gmetad
   
 - name: start gmetad
-  action: service name=gmetad state=running
+  action: service name=gmetad state=started
   when: "ansible_os_family == 'RedHat'"
 
 - name: Open port 8651 - tcp in the firewall
