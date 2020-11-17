@@ -15,7 +15,7 @@
       - restart ganglia-monitor
 
 - name: start gmond
-  action: service name=gmond state=running
+  action: service name=gmond state=started
   when: "ansible_os_family == 'RedHat'"
 
 - name: initially restart gmond
